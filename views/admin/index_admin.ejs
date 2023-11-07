@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<title>Admin Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+</head>
+
+<style>
+  body {
+    font-family: "Roboto", sans-serif
+  }
+
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  main {
+    margin-left: 250px;
+    min-height: 100vh;
+    background-color:#f1f5f9;
+  }
+</style>
+
+<body>
+  <div class="sidebar">
+    <a href="/admin" class="d-flex align-items-center p-3 link-body-emphasis text-decoration-none border-bottom">
+      <span class="fs-5 fw-semibold">Shop11<span class="text-success">.com</span></span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <a href="/admin" class="btn btn-toggle d-inline-flex align-items-center rounded border-0">
+          <i class="fa-solid fa-chart-pie"></i>&ensp;Dashboard
+        </a>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+          data-bs-toggle="collapse" data-bs-target="#ad-collapse" aria-expanded="false">
+          <i class="fa-brands fa-shopify"></i>&ensp;Content&emsp;&emsp;<i class="fa-solid fa-caret-down"></i>
+        </button>
+        <div class="collapse" id="ad-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Tạo Content</a>
+            </li>
+            <li><a href="#" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Danh sách content
+                cáo</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+          data-bs-toggle="collapse" data-bs-target="#product-collapse" aria-expanded="false">
+          <i class="fa-solid fa-store"></i>&ensp;Quản lý sản phẩm&emsp;&emsp;<i class="fa-solid fa-caret-down"></i>
+        </button>
+        <div class="collapse" id="product-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/admin/add-product" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Thêm sản phẩm</a>
+            </li>
+            <li><a href="/admin/list-product" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Danh sách sản
+                phẩm</a></li>
+            <li><a href="/admin/edit-product" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Sửa ản phẩm</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+          data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          <i class="fa-solid fa-user-nurse"></i>&ensp;Account&emsp;&emsp;<i class="fa-solid fa-caret-down"></i>
+        </button>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Thông tin của
+                tôi</a></li>
+            <li><a href="#" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+            <li><a href="#" class="ms-4 link-body-emphasis d-inline-flex text-decoration-none rounded text-danger">Sign
+                out&emsp;<i class="fa-solid fa-right-from-bracket" style="color: #ff0000;"></i></a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <main>
+    <header style="width: 100%;background-color: white; top:0; position: fixed;">
+      <h2 class="mt-2"><%= desc %></h2>
+    </header>
+
+    <!-- ========== content ============================= -->
+    <div class="row" style="margin-top: 60px;">
+      <% if(x === 'add-product' ){ %>
+        <%- include('product_add'); %>
+          <%} else if(x === 'list-product' ){ %>
+            <%- include('product_list'); %>
+              <%} else if(x === 'edit-product' ){ %>
+                <%- include('product_edit'); %>
+                  <% }else{ %>
+                    <%- include('dashboard'); %>
+                      <% } %>
+
+      
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <script>
+    // Open and close the sidebar on medium and small screens
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Change style of top container on scroll
+    window.onscroll = changePos;
+    function changePos() {
+      var header = document.getElementById("mytop");
+      if (window.pageYOffset > 70) {
+        header.style.position = "fixed";
+        header.style.top = "0";
+        header.style.width = "1600px"
+      } else {
+        header.style.position = "";
+        header.style.top = "";
+      }
+    }
+
+    // Accordions
+    function myAccordion(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme";
+      } else {
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className =
+          x.previousElementSibling.className.replace(" w3-theme", "");
+      }
+    }
+  </script> -->
+
+</body>
+
+</html>

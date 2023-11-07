@@ -1,0 +1,72 @@
+<div class="container-fluid" style="width: 99%; margin-bottom: 1rem; padding: 1rem;">
+  <form class="row" action="" method="post">
+    <div class="col-md-2">
+      <label class="form-label">sort by:</label>
+      <select class="form-select" id="validationDefault04" required>
+        <option selected disabled value="">Mã sản phẩm</option>
+        <option>Tên sản phẩm</option>
+        <option>mặt hàng</option>
+        <option>nhãn hiệu</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label class="form-label">sô lượng</label>
+      <input type="number" class="form-control" value="10">
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+      <label class="form-label">tìm sảm phẩm...</label><br>
+      <div class="col-md-9 d-inline-block">
+        <input type="text" class="form-control" placeholder="mã, tên, mệnh giá...">
+      </div>
+      <div class="col-md-2 d-inline-block">
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid" style="width: 98%; height: 100%;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Hình</th>
+        <th>mặt hàng</th>
+        <th>nhãn hiệu</th>
+        <th>giá thành</th>
+        <th>giá bán</th>
+        <th>giảm</th>
+        <th>SL</th>
+        <th>mô tả</th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <% for(var i = 0; i < 10 ; i++){ %>
+      <tr>
+        <td>123456789</td>
+        <td>ịphone 15 pro max</td>
+        <td><img src="/image/product/shopify.svg" width="25px"></td>
+        <td>Điện thoại</td>
+        <td>Samsung</td>
+        <td>1,000,000 Đ</td>
+        <td>1,500,000 Đ</td>
+        <td>10 %</td>
+        <td>5</td>
+        <td><textarea name="" id="" cols="23" rows="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur porro eius et dolorum at similique voluptatem odio laudantium recusandae quos rem eligendi repudiandae, quae, fugit facilis temporibus aliquam. Inventore, neque.</textarea></td>
+        <td>
+          <a href="http://" class="me-3">
+            <i class="fa-solid fa-pen-to-square" style="color: green;"></i>
+          </a>
+          <a href="http://">
+            <i class="fa-solid fa-trash" style="color: #ff0000; "></i>
+          </a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
