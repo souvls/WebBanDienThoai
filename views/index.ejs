@@ -4,61 +4,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Home page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>11 Shop - Home</title>
+    <style>
+        .nav-item:hover .nav-link {
+            color: yellowgreen;
+        }
+
+        .nav-link .active {
+            color: yellowgreen;
+        }
+        #owl-item-product{
+            min-height: 400px;
+            border-radius: 5px;
+            padding: 1rem;
+            background-color: yellowgreen;
+            transition: .1s ease-in-out;
+        }
+        #owl-item-product:hover{
+            padding: .5rem;
+        }
+        #product{
+            display: block;
+            min-height: 400px;
+            padding: 1rem;
+            border-radius: 5px;
+            color: black;
+            text-decoration: none;
+            border: 1px solid rgb(235, 233, 233);
+        }
+        #product:hover{
+            background-color: yellowgreen;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav class="nav-header">
-            <div class="logo">
-                <span>Shop 11</span>
-            </div>
-            <div class="search-area">
-                <input type="text">
-                <input type="button" value="tìm">
-            </div>
-            <div class="user-area">
-                <a class="btn-login" href="http://">Login</a>
-                <a class="btn-register" href="http://">Register</a>
-            </div>
-        </nav>
-        <nav class="nav-menu">
-            <ul class="nav-menu-item">
-                <li><a href="http://">Trang Chủ</a></li>
-                <li>
-                    <a href="http://">sản phẩm</a>
-                    <ul class="sub-menu">
-                        <li><a href="http://">ABC</a></li>
-                        <li><a href="http://">ABC</a></li>
-                        <li><a href="http://">ABC</a></li>
-                        <li><a href="http://">ABC</a></li>
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark"">
+        <div class=" container">
+        <a class="navbar-brand mb-0 fs-5" href="/">11 Mobile Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul id="myDIV" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fs-5 active" aria-current="page" href="/">Trang chủ</a>
                 </li>
-
-                <li><a href="http://">tin tức</a></li>
-                <li><a href="http://">liên hệ</a></li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link fs-5" href="#">Sản phẩm</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="#">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="#">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <form class="position-relative">
+                        <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success position-absolute top-0 end-0 fs-5" type="submit"><i
+                                class="fas fa-search"></i></button>
+                    </form>
+                </li>
+                <ul class="navbar-nav ms-5">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="/cart"><i class="fas fa-shopping-cart"></i>&emsp14;Giỏ hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="#"><i class="fa-solid fa-circle-user"></i>&emsp14;Đăng nhập/Đăng
+                            ký</a>
+                    </li>
+                </ul>
             </ul>
-            <div class="nav-cart">
-                <a href="http://">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>giỏ hàng</span>
-                </a>
-
+        </div>
+        </div>
+    </nav>
+    <section class="menu-bar p-2" style="background-color: yellowgreen;">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm p-2">
+                    <a class="text-dark fs-5" style="text-decoration: none;" href="/search/category/1"><i class="fas fa-mobile-alt"></i>Điện thoại</a>
+                </div>
+                <div class="col-sm p-2">
+                    <a class="text-dark fs-5" style="text-decoration: none;" href="/search/category/2"><i class="fas fa-solid fa-laptop"></i>Laptop</a>
+                </div>
+                <div class="col-sm p-2">
+                    <a class="text-dark fs-5" style="text-decoration: none;" href="/search/category/3"><i class="fas fa-solid fa-headphones"></i>Phụ kiện</a>
+                </div>
+                <div class="col-sm p-2">
+                    <a class="text-dark fs-5" style="text-decoration: none;" href="/search/category/4"><i class="fa-solid fa-camera"></i>Máy ảnh</a>
+                </div>
             </div>
-        </nav>
-    </header>
-    <content>
+        </div>
+    </section>
+    <section>
+        <% if(x === 'home'){ %>
+            <%- include('home') %>
+        <% }else if(x=== 'cart'){ %>
+            <%- include('cart') %>
+        <% }else if(x=== 'checkout'){ %>
+            <%- include('checkout') %>
+        <% }else if(x === 'info'){ %>
+            <%- include('info') %>
+        <% }else if(x === 'search'){ %>
+            <%- include('search',{products:products}) %>
+        <% } %>
+        </section>
 
-    </content>
-    <footer>
-        <div class="footer-content">
+    <footer class="bg-dark">
+        <div class="container">
+            <h1 class="text-light">footer</h1>
+            <br>
+            <br>
+            <br>
+            <br>
 
         </div>
-        
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- OwlCarousel2 slide show list product -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <script type="text/javascript">
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    </script>
+    <!-- Boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <script>
+
+        //====> Start active mune bar ##################### 
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myDIV");
+        var btns = header.getElementsByClassName("nav-link");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+        //====> End active mune bar ##################### 
+    </script>
 </body>
 
 

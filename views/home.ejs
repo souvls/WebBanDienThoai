@@ -1,0 +1,104 @@
+<section class="promotin-area mt-2">
+    <div class="row">
+        <div class="col-sm-8">
+            <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/image/content/active-content.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <% Object.values(slideShow).forEach(item =>{ %>
+                        <a href="">
+                            <div class="carousel-item">
+                                <img src="/image/content/<%= item.content_img %>" class="d-block w-100" alt="...">
+                            </div>
+                        </a>
+                    <% }) %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="/image/promotion/anh1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="col-sm-6">
+                    <img src="/image/promotion/anh2.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm-6">
+                    <img src="/image/promotion/anh3.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="col-sm-6">
+                    <img src="/image/promotion/anh4.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="Product-area mt-2">
+    <div class="container bg-dark">
+        <h3 class="text-light pt-2">TẤT CẢ SẢN PHẨM</h3>
+        <hr class="text-light pb-2">
+
+        <div class="owl-carousel owl-theme">
+            <% Object.values(products).forEach(item =>{ %>
+            <div class="item">
+                <div id="owl-item-product">
+                    <img src="/image/product/<%= item.s_hinh %>" class="rounded" alt="...">
+                    <span class="fw-bold"><%= item.s_ten %></span><br>
+                    <span class="fw-medium fst-italic"><%= new Intl.NumberFormat("en-US").format(item.s_gia) %> đ</span><br>
+                    <% if(item.s_uudai > 0){ %>
+                        <span class="fw-medium fst-italic">giảm <%= item.s_uudai %>%</span><br>
+                    <% } %>
+                    <hr>
+                    <a class="btn btn-primary" href="/add-cart/<%= item.s_ma %>"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="btn btn-info" href="/info/<%= item.s_ma %>"><i class="fa-solid fa-eye"></i></a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<section class="selling-products mt-4">
+    <div class="container">
+        <div class="d-flex justify-content-between flex-wrap">
+            <div class="">
+                <h3 class="">SẢN PHẨM BÁN CHẠY</h3>
+            </div>
+            <div class="d-flex flex-wrap pt-2">
+                <a class="border border-1 rounded-pill ps-2 pe-2 fs-5">Gía đồ laptop</a>
+                <a class="border border-1 rounded-pill ps-2 pe-2 fs-5">Gía đồ laptop</a>
+                <a class="border border-1 rounded-pill ps-2 pe-2 fs-5">Gía đồ laptop</a>
+                <a class="border border-1 rounded-pill ps-2 pe-2 fs-5">Gía đồ laptop</a>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-1">
+        <% for(var i =0; i < 2; i++){ %>
+            <div class="row pb-2">
+            <% for(var j = 0; j < 4; j++){ %>
+                <div class="col-sm-3">
+                    <a id="product" href="/info/<%= products[j].s_ma %>">
+                        <img src="/image/product/<%= products[j].s_hinh %>" class="rounded" width="100%" alt="...">
+                        <span class="fw-bold"><%= products[j].s_ten %></span><br>
+                        <span class="fw-medium fst-italic text-danger"><%= new Intl.NumberFormat("en-US").format(products[j].s_gia) %>đ</span><br>
+                        <% if(products[j].s_uudai > 0){ %>
+                            <span class="fw-medium fst-italic">giảm <%= products[j].s_uudai %>%</span><br>
+                        <% } %>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+        <% } %>
+    </div>
+</section>

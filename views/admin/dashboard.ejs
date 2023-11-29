@@ -1,63 +1,195 @@
-<div class="col md-4 m-4 p-4 rounded" style="background-color: white;">
-    <div class="row">
-      <div class="col-3 d-flex justify-content-center align-items-center">
-        <i style="font-size: 40px;color: skyblue;" class="fa-solid fa-cart-shopping"></i>
+<div class="container-fluid" style="width: 99%; padding:0 2rem;">
+  <div class="head-dashboard row">
+    <div class="col-md-3 p-3">
+      <div class="row p-2 rounded" style="background-color: white;">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <i style="font-size: 40px;color: skyblue;" class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class="col" style="text-align: center;">
+          <h6 class="mb-10">hàng đang đặt</h6>
+          <h3 class="fw-bold mb-10">34567</h3>
+          <p class="text-sm text-success">
+            <i class="lni lni-arrow-up"></i> +2.00%
+            <span class="text-gray">(30 days)</span>
+          </p>
+        </div>
       </div>
-      <div class="col" style="text-align: center;">
-        <h6 class="mb-10">hàng đang đặt</h6>
-        <h3 class="fw-bold mb-10">34567</h3>
-        <p class="text-sm text-success">
-          <i class="lni lni-arrow-up"></i> +2.00%
-          <span class="text-gray">(30 days)</span>
-        </p>
+    </div>
+    <!-- ///////////////////////////////////////////// -->
+    <div class="col-md-3 p-3">
+      <div class="row p-2 rounded" style="background-color: white;">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <i style="font-size: 40px;color:green" class="fa-brands fa-square-font-awesome-stroke"></i>
+        </div>
+        <div class="col" style="text-align: center;">
+          <h6 class="mb-10">Tổng thu nhập</h6>
+          <h3 class="fw-bold mb-10">50,000,000 đ</h3>
+          <p class="text-sm text-success">
+            <i class="lni lni-arrow-up"></i> +2.00%
+            <span class="text-gray">(30 days)</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- ///////////////////////////////////////////// -->
+    <div class="col-md-3 p-3">
+      <div class="row p-2 rounded" style="background-color: white;">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <i style="font-size: 40px;color: rgb(0, 183, 255);" class="fa-solid fa-seedling"></i>
+        </div>
+        <div class="col" style="text-align: center;">
+          <h6 class="mb-10">Tổng chi phí</h6>
+          <h3 class="fw-bold mb-10">10,000,000</h3>
+          <p class="text-sm text-success">
+            <i class="lni lni-arrow-up"></i> +2.00%
+            <span class="text-gray">(30 days)</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- ///////////////////////////////////////////// -->
+    <div class="col-md-3 p-3">
+      <div class="row p-2 rounded" style="background-color: white;">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <i style="font-size: 40px;color: #ffd91a;" class="fa-solid fa-users"></i>
+        </div>
+        <div class="col" style="text-align: center;">
+          <h6 class="mb-10">Tổng User</h6>
+          <h3 class="fw-bold mb-10">34567</h3>
+          <p class="text-sm text-success">
+            <i class="lni lni-arrow-up"></i> +2.00%
+            <span class="text-gray">(30 days)</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  <!-- ///////////////////////////////////////////// -->
-  <div class="col md-4 m-4 p-4 rounded" style="background-color: white;">
+  <div class="chart-dashboard">
+    <hr>
+    <h5>thống kê bán hàng</h5>
     <div class="row">
-      <div class="col-3 d-flex justify-content-center align-items-center">
-        <i style="font-size: 40px;color:green" class="fa-brands fa-square-font-awesome-stroke"></i>
+      <div class="col-md-6 me-2" style="background-color: white;">
+        <canvas  id="myChart1"></canvas>
       </div>
-      <div class="col" style="text-align: center;">
-        <h6 class="mb-10">Tổng thu nhập</h6>
-        <h3 class="fw-bold mb-10">50,000,000 đ</h3>
-        <p class="text-sm text-success">
-          <i class="lni lni-arrow-up"></i> +2.00%
-          <span class="text-gray">(30 days)</span>
-        </p>
+      <div class="col-md-5" style="background-color: white;">
+        <h5>5 Hóa đơn mớin nhất</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>ngày đặt</th>
+              <th>tên</th>
+              <th>số tiền</th>
+              <th>pttt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12345</td>
+              <td>324332</td>
+              <td>tên</td>
+              <td>số tiền</td>
+              <td>pttt</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>324332</td>
+              <td>tên</td>
+              <td>số tiền</td>
+              <td>pttt</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>324332</td>
+              <td>tên</td>
+              <td>số tiền</td>
+              <td>pttt</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>324332</td>
+              <td>tên</td>
+              <td>số tiền</td>
+              <td>pttt</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>324332</td>
+              <td>tên</td>
+              <td>số tiền</td>
+              <td>pttt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <h5>thống kê sản phẩm</h5>
+    <div class="row">
+      <div class="col-md-3 me-2" style="background-color: white;">
+        <canvas  id="myChart2"></canvas>
+      </div>
+      <div class="col-md-8" style="background-color: white;">
+        <h5>5 sản phẩm bán chạy</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>tên</th>
+              <th>hình</th>
+              <th>đã bán</th>
+              <th>còn lại</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12345</td>
+              <td>ácdvvr</td>
+              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
+              <td>50</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>ácdvvr</td>
+              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
+              <td>50</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>ácdvvr</td>
+              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
+              <td>50</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>ácdvvr</td>
+              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
+              <td>50</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>12345</td>
+              <td>ácdvvr</td>
+              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
+              <td>50</td>
+              <td>100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+    <h5>thống kê người dùng</h5>
+    <div class="row">
+      <div class="col-md-6 me-2" style="background-color: white;">
+        <canvas  id="myChart3"></canvas>
       </div>
     </div>
   </div>
-  <!-- ///////////////////////////////////////////// -->
-  <div class="col md-4 m-4 p-4 rounded" style="background-color: white;">
-    <div class="row">
-      <div class="col-3 d-flex justify-content-center align-items-center">
-        <i style="font-size: 40px;color: rgb(0, 183, 255);" class="fa-solid fa-seedling"></i>
-      </div>
-      <div class="col" style="text-align: center;">
-        <h6 class="mb-10">Tổng chi phí</h6>
-        <h3 class="text-bold mb-10">10,000,000</h3>
-        <p class="text-sm text-success">
-          <i class="lni lni-arrow-up"></i> +2.00%
-          <span class="text-gray">(30 days)</span>
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- ///////////////////////////////////////////// -->
-  <div class="col md-4 m-4 p-4 rounded" style="background-color: white;">
-    <div class="row">
-      <div class="col-3 d-flex justify-content-center align-items-center">
-        <i style="font-size: 40px;color: #ffd91a;" class="fa-solid fa-users"></i>
-      </div>
-      <div class="col" style="text-align: center;">
-        <h6 class="mb-10">Tổng User</h6>
-        <h3 class="text-bold mb-10">34567</h3>
-        <p class="text-sm text-success">
-          <i class="lni lni-arrow-up"></i> +2.00%
-          <span class="text-gray">(30 days)</span>
-        </p>
-      </div>
-    </div>
-  </div>
+</div>

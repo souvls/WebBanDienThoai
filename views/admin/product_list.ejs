@@ -1,26 +1,26 @@
 <div class="container-fluid" style="width: 99%; margin-bottom: 1rem; padding: 1rem;">
-  <form class="row" action="" method="post">
+  <form class="row" action="/search" method="post">
     <div class="col-md-2">
       <label class="form-label">sort by:</label>
-      <select class="form-select" id="validationDefault04" required>
-        <option selected disabled value="">Mã sản phẩm</option>
-        <option>Tên sản phẩm</option>
-        <option>mặt hàng</option>
-        <option>nhãn hiệu</option>
+      <select class="form-select" id="validationDefault04" name="pd_sortby">
+        <option selected value="s_ma">Mã sản phẩm</option>
+        <option value="s_ten">Tên sản phẩm</option>
+        <option value="s_mathang">mặt hàng</option>
+        <option value="s_nhanhieu">nhãn hiệu</option>
       </select>
     </div>
     <div class="col-md-2">
       <label class="form-label">sô lượng</label>
-      <input type="number" class="form-control" value="10">
+      <input type="number" class="form-control" name="pd_limit" value="10">
     </div>
-    <div class="col-md-2"></div>
     <div class="col-md-6">
       <label class="form-label">tìm sảm phẩm...</label><br>
       <div class="col-md-9 d-inline-block">
-        <input type="text" class="form-control" placeholder="mã, tên, mệnh giá...">
+        <input type="text" class="form-control" name="pd_key" placeholder="mã, tên, mệnh giá...">
       </div>
       <div class="col-md-2 d-inline-block">
         <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <a href="/admin/list-product" class="btn btn-primary">ALL</a>
       </div>
     </div>
   </form>
@@ -45,23 +45,23 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <% for(var i = 0; i < 10 ; i++){ %>
+      <% for(var i = 0; i < product.length ; i++){ %>
       <tr>
-        <td>123456789</td>
-        <td>ịphone 15 pro max</td>
-        <td><img src="/image/product/shopify.svg" width="25px"></td>
-        <td>Điện thoại</td>
-        <td>Samsung</td>
-        <td>1,000,000 Đ</td>
-        <td>1,500,000 Đ</td>
-        <td>10 %</td>
-        <td>5</td>
-        <td><textarea name="" id="" cols="23" rows="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur porro eius et dolorum at similique voluptatem odio laudantium recusandae quos rem eligendi repudiandae, quae, fugit facilis temporibus aliquam. Inventore, neque.</textarea></td>
+        <td><%= products[i].s_ma %></td>
+        <td><%= products[i].s_ten %></td>
+        <td><img src="/image/product/<%= products[i].s_hinh %>" width="25px"></td>
+        <td><%= products[i].m_name %></td>
+        <td><%= products[i].nh_name %></td>
+        <td><%= products[i].s_giamua %></td>
+        <td><%= products[i].s_gia %></td>
+        <td><%= products[i].s_uudai %></td>
+        <td><%= products[i].s_soluong %></td>
+        <td><textarea name="" id="" cols="23" rows="1"><%= products[i].s_mota %></textarea></td>
         <td>
-          <a href="http://" class="me-3">
+          <a href="/admin/edit-product/<%= products[i].s_ma %>" class="me-3">
             <i class="fa-solid fa-pen-to-square" style="color: green;"></i>
           </a>
-          <a href="http://">
+        <a href="/admin/delete-product/<%= products[i].s_ma %>" onclick="return confirm('Delte ')">
             <i class="fa-solid fa-trash" style="color: #ff0000; "></i>
           </a>
         </td>

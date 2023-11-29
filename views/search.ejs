@@ -1,0 +1,26 @@
+<div class="container" style="min-height: 600px;">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="page-breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trang chủ > </a></li>
+                    <li>tìm kiểm</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <% Object.values(products).forEach(item =>{ %>
+            <div class="col-sm-3">
+                <a id="product" href="/info/<%= item.s_ma %>">
+                    <img src="/image/product/<%= item.s_hinh %>" class="rounded" width="100%" alt="...">
+                    <span class="fw-bold"><%= item.s_ten %></span><br>
+                    <span class="fw-medium fst-italic text-danger"><%= new Intl.NumberFormat("en-US").format(item.s_gia) %>đ</span><br>
+                    <% if(item.s_uudai > 0){ %>
+                        <span class="fw-medium fst-italic">giảm <%= item.s_uudai %>%</span><br>
+                    <% } %>
+                </a>
+            </div>
+            <% }) %>
+    </div>
+</div>

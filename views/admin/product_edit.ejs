@@ -1,1 +1,69 @@
-<h1>edit product</h1>
+<div class="container-fluid" style="width: 80%; padding: 2rem;">
+    <a href="/admin/list-product" class="btn btn-success mb-2"> <i class="fa-solid fa-arrow-left"></i> &ensp;Quay lại</a>
+    <form class="row g-3 was-validated" action="/admin/product/update"  enctype="multipart/form-data" method="post">
+        <div class="col-md-4">
+
+          <label for="validationServer01"  class="form-label">ID sản phẩm</label>
+          <input type="number" class="form-control" name="pd_id" value="<%= products[0].s_ma %>">
+        </div>
+        <div class="col-md-8">
+          <label for="validationServer02" class="form-label">Tên sản phẩm</label>
+          <input type="text" class="form-control is-valid" id="validationServer02" name="pd_name" value="<%= products[0].s_ten %>" required>
+        </div>
+        <div class="col-md-3">
+          <label for="validationServer03" class="form-label">mặt hàng</label>
+          <select class="form-select is-invalid" id="validationServer03" name="pd_item" aria-describedby="validationServer04Feedback" required>
+            <% var x=0; %> 
+            <% Object.values(items).forEach(element => { %>
+              <% if(element.m_ma == x){%>
+                <option selected value="<%= element.m_ma %>"><%= element.m_name %></option>
+              <% } %>
+              <option value="<%= element.m_ma %>"><%= element.m_name %></option>  
+            <% x++ }); %>
+          </select>
+        </div>
+        <div class="col-md-3">
+            <label for="validationServer04" class="form-label">nhãn hiệu</label>
+            <select class="form-select is-invalid" id="validationServer04" name="pd_brand" aria-describedby="validationServer04Feedback" required>
+            <% var x=0; %> 
+            <% Object.values(brands).forEach(element => { %>
+              <% if(element.nh_ma == x){%>
+                <option selected value="<%= element.nh_ma %>"><%= element.nh_name %></option>
+              <% } %>
+              <option value="<%= element.nh_ma %>"><%= element.nh_name %></option>  
+            <% x++ }); %>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="validationServer05" class="form-label">Số lượng</label>
+            <input type="number" class="form-control is-valid" id="validationServer05" name="pd_num" value="<%= products[0].s_soluong %>" required>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <label for="validationServer06" class="form-label">Giá thành sản phẩm</label>
+            <input type="number" class="form-control is-valid" id="validationServer06" name="pd_price1" value="<%= products[0].s_giamua %>" required>
+        </div>
+        <div class="col-md-3">
+            <label for="validationServer07" class="form-label">Giá sản phẩm</label>
+            <input type="number" class="form-control is-valid" id="validationServer07" name="pd_price2" value="<%= products[0].s_gia %>" required>
+        </div>
+        <div class="col-md-3">
+            <label for="validationServer08" class="form-label">giảm giá (%)</label>
+            <input type="number" class="form-control is-valid" id="validationServer08" name="pd_discount" value="<%= products[0].s_uudai %>" required>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+          <img src="/image/product/<%= products[0].s_hinh %>" width="100px">
+        </div>
+        <div class="col-md-6">
+            <input type="file" accept="image/*,.pdf" name="pd_image" class="form-control">
+        </div>
+        <div class="col-md-12">
+            <label for="validationTextarea" class="form-label">Mô tả sản phẩm</label>
+            <textarea class="form-control" id="validationTextarea" name="pd_desc"><%= products[0].s_mota %>.</textarea>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" type="submit" onclick="return confirm('chắc chẵn thay đổi hay không?')">Lưu</button>
+        </div>
+      </form>
+</div>

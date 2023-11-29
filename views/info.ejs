@@ -1,0 +1,276 @@
+ <!-- page-header -->
+ <div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li><a href="/">Trang chủ > </a></li>
+                        <li>Chi tiết sản phẩm</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.page-header-->
+<!-- product-single -->
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <!-- product-description -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="/image/product/<%= product.s_hinh %>" style="width: 400px;" alt="">
+                            </div>
+                            <div class="col-8">
+                                <div class="product-single">
+                                    <h2><%= product.s_ten %></h2>
+                                    <!-- <div class="product-rating">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                        <span class="text-secondary">&nbsp;(12 đánh giá)</span>
+                                    </div> -->
+                                    <p class="product-price" style="font-size: 25px;"><%= new Intl.NumberFormat("en-US").format(product.s_gia) %> VND</p>
+                                    <div class="product-quantity">
+                                        <h4>Số lượng</h4>
+                                        <div class="quantity mb20">
+                                            <input class="btn-quantity decrease-quantity" onclick="dcQuantity()"
+                                                type="button" value="-">
+                                            <input type="number" max="10" min="1" name="quantity" value="1"
+                                                class="quantity-input" id="quantity-input">
+                                            <input class="btn-quantity increase-quantity" onclick="icQuantity()"
+                                                type="button" value="+">
+                                        </div>
+                                        <span class="rest-quantity"><%= product.s_soluong %> sản phẩm có sẵn</span>
+                                    </div>
+                                    <div>
+                                        <button class="btn" style="background-color: yellowgreen;">
+                                            Mua Ngay
+                                        </button>
+                                        <button type="submit" class="btn" style="background-color: yellowgreen;">
+                                            <i class="fa fa-shopping-cart"></i>&nbsp;Thêm vào giỏ hàng
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <span>
+                    <%= product.s_mota %>
+                </span>
+            </div>
+            <div class="col-6">
+                <div class="box container-rating-review">
+                    <div class="box-head">
+                        <h3 class="head-title">Đánh giá và nhận xét</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row  rating-box">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="rating-review">
+                                    <div class="">
+                                        <h1 class="score-rating">4</h1>
+                                    </div>
+                                    <div>
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        </div>
+                                        <p class="text-secondary">12 nhận xét</p>
+                                    </div>
+                                </div>
+                                <div class="rating-view-details">
+                                    <div class="rating-level">
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                        </div>
+                                        <span>12</span>
+                                    </div>
+
+                                    <div class="rating-level">
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        </div>
+                                        <span>0</span>
+                                    </div>
+                                    <div class="rating-level">
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        </div>
+                                        <span>0</span>
+                                    </div>
+
+                                    <div class="rating-level">
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        </div>
+                                        <span>0</span>
+                                    </div>
+                                    <div class="rating-level">
+                                        <div class="product-rating">
+                                            <span><i class="fa fa-star"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        </div>
+                                        <span>0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row review-box">
+                            <div class="customer-reviews">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="reviews-text"><span class="text-default">Nika Nguyen</span> </p>
+                                    <div class="product-rating">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    </div>
+                                    <p>Giao hàng siêu đúng hẹn, hàng cũng được đóng gói cẩn thận.
+                                        Hiện tại mình xài được vài bữa thì không bị vấn đề gì.
+                                        Hàng của shopdunk thì không lo về chất lượng.</p>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="divider-line"></div>
+                                </div>
+                            </div>
+                            <div class="customer-reviews">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="reviews-text"> <span class="text-default">Lưu Tee</span>
+                                    </p>
+                                    <div class="product-rating">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    </div>
+
+                                    <p>Mặc dù vận chuyển lâu do lỗi, nhưng shop vẫn hỗ trợ mình rất nhiệt tình
+                                    </p>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="divider-line"></div>
+                                </div>
+                            </div>
+                            <div class="customer-reviews">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="reviews-text"> <span class="text-default">William
+                                            Cassidy</span>
+                                    </p>
+                                    <div class="product-rating">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    </div>
+
+                                    <p>Sản phẩm rất tốt vì là lần đầu tôi mua trên mạng đt nên thấy khá là lo
+                                        lắng nhưng khi nhận đc hàng thì tôi lại thấy tốt hơn mong đợi của mình
+                                        chúc Shop làm ăn mua may bán đắt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /////////////////// -->
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="box">
+                            <div class="box-head">
+                                <h3 class="head-title">Đánh giá và nhận xét của bạn</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="review-form">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 review-left">
+                                            <div class="review-rating">
+                                                <div class="star-rate" id="rateYo"></div>
+                                            </div>
+                                        </div>
+                                        <form class="review-right">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only " for="name"></label>
+                                                    <input id="name" type="text" class="form-control"
+                                                        placeholder="Họ tên" required="">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only " for="email"></label>
+                                                    <input id="email" type="text" class="form-control"
+                                                        placeholder="Email" required="">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only " for="textarea"></label>
+                                                    <textarea class="form-control" id="textarea" name="textarea"
+                                                        rows="4" placeholder="Mời bạn nhập bình luận"></textarea>
+                                                </div>
+                                                <br>
+                                                <button id="submit" name="singlebutton" class="btn" style="background-color: yellowgreen;">Gửi
+                                                    đánh giá</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+       
+    </div>
+    <br>
+</div>
