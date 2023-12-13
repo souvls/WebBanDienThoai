@@ -4,34 +4,30 @@
     <div class="cart-content mt-3">
         <div class="title-header text-center">
             <h2 class="title">Giỏ Hàng</h2>
-            <p><span class="text-primary">2</span> sản phẩm trong giỏ hàng của bạn</p>
+            <p><span id="numProduct" class="text-primary">0</span> sản phẩm trong giỏ hàng của bạn</p>
         </div>
         <div class="row mb-2">
             <div class="col-8">
                 <table class="table border border-secondary">
                     <thead class="thead-light">
                         <tr>
-                            <th></th>
-                            <th>Sản phẩm</th>
+                            <th scope="col">tên</th>
+                            <th scope="col">hình</th>
                             <th scope="col">Đơn giá</th>
                             <th scope="col">Số lượng</th>
+                            <th scope="col">Giảm</th>
                             <th scope="col">Thành tiền</th>
                             <th scope="col"></th>
-        
                         </tr>
                     </thead>
-                    <% for(var i = 0; i <2 ; i++){ %>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="item-center pdl10"><input type="checkbox" class="checkboxStyle"></div>
-                            </td>
+                    <tbody id="Data">
+                        
+                        <!-- <tr>
                             <td>
                                 <div class="product-title item-center">
                                     <img src="" alt="">
                                     <div>
                                         <p>iPhone 13 Pro 128GB</p>
-                                        <p>Màu sắc: Đỏ</p>
                                     </div>
                                 </div>
                             </td>
@@ -56,64 +52,37 @@
                             <td>
                                 <div class="item-center pinside10"><i class="far fa-trash-alt"></i></div>
                             </td>
-                        </tr>
-        
-                        <tr>
-                            <td>
-                                <div class="item-center pdl10"><input type="checkbox" class="checkboxStyle"></div>
-                            </td>
-                            <td>
-                                <div class="product-title item-center">
-                                    <img src="" alt="">
-                                    <div>
-                                        <p>iPhone 11 Pro 128GB</p>
-                                        <p>Màu sắc: Xanh</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item-center">17.000.000đ</div>
-                            </td>
-                            <td>
-                                <div class="item-center">
-                                    <div class="quantity">
-                                        <input class="btn-quantity decrease-quantity" onclick="dcQuantity()" type="button"
-                                            value="-">
-                                        <input type="number" max="10" min="1" name="quantity" value="1"
-                                            class="quantity-input" id="quantity-input">
-                                        <input class="btn-quantity increase-quantity" onclick="icQuantity()" type="button"
-                                            value="+">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item-center text-red">17.000.000đ</div>
-                            </td>
-                            <td>
-                                <div class="item-center pinside10"><i class="far fa-trash-alt"></i></div>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
-                    <% } %>
                 </table>
             </div>
             <div class="col-4">
                 <div class="prices-summary border border-secondary p-2">
-                    <div class="row">
-                        <div class="col-8 mt-2 mb-3">
-                            <input type="text" class="input-group p-1" placeholder="Nhập mã ưu đãi">
+                    <form method="post" action="/checkVoucher">
+                        <div class="row">
+                            <div class="col-8 mt-2 mb-3">
+                                <input type="text" class="input-group p-1" name="vouchercode" placeholder="Nhập mã ưu đãi" required>
+                            </div>
+                            <div class="col-4 mt-2 mb-3">
+                                <button type="submit" class="btn" style="background-color: yellowgreen;">Áp dụng</button>
+                            </div>
                         </div>
-                        <div class="col-4 mt-2 mb-3">
-                            <button type="submit" class="btn" style="background-color: yellowgreen;">Áp dụng</button>
-                        </div>
-                    </div>
+                    </form>
                     <hr>
                     <div class="row">
                         <div class="col-3">
-                            <span class="prices-text">Tạm tính</span>
+                            <span  class="prices-text">Tạm tính</span>
                         </div>
                         <div class="col-9">
-                            <span class="prices-value">47.750.000đ</span>
+                            <span id="tamTinh" class="prices-value">0 đ</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <span class="prices-text">Mã ưu đãi</span>
+                        </div>
+                        <div class="col-9">
+                            <span class="prices-value"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -121,7 +90,7 @@
                             <span class="prices-text">Giảm giá</span>
                         </div>
                         <div class="col-9">
-                            <span class="prices-value">0đ</span>
+                            <span class="prices-value">0</span>
                         </div>
                     </div>
                     <hr>
@@ -130,7 +99,7 @@
                             <span class="price-text">Tổng cộng</span>
                         </div>
                         <div class="col-9">
-                            <span class="text-danger fs-4">47.750.000đ</span>
+                            <span id="tongCong" class="text-danger fs-4">0 đ</span>
                         </div>
                     </div>
                 </div>

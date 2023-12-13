@@ -1,7 +1,7 @@
 <!-- checkout -->
 <div class="container mt-2">
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
             <div class="box checkout-form">
                 <!-- checkout - form -->
                 <div class="box-head">
@@ -12,60 +12,40 @@
                         <form>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only" for="name"></label>
-                                    <input name="name" type="text" class="form-control"
-                                        placeholder="Họ" required>
+                                    <label" class="control-label" for="name">Họ tên</label>
+                                    <input id="name" name="name" type="text" class="form-control" value="<%= user.ng_hoTen %>" readonly>
                                 </div>
                             </div>
                             <br>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only" for="name"></label>
-                                    <input id="name" name="name" type="text" class="form-control"
-                                        placeholder="Tên" required>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label class="control-label sr-only" for="email">Email</label>
+                                    <label class="control-label" for="email">Email</label>
                                     <input id="email" name="email" type="text" class="form-control"
-                                        placeholder="Email address" required>
+                                    value="<%= user.ng_email %>" readonly placeholder="Email address" readonly>
                                 </div>
                             </div>
                             <br>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only" for="phone"></label>
+                                    <label class="control-label" for="phone">Số điện thoại</label>
                                     <input id="phone" name="phone" type="text" class="form-control"
-                                        placeholder="Phone" required>
+                                    value="<%= user.ng_Phone %>" readonly placeholder="Phone" required>
                                 </div>
                             </div>
                             <br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only"> </label>
-                                    <select name="country name" class="form-control" required>
-                                        <option value="">Việt Nam</option>
-                                        <option value="1">United Kingdom</option>
-                                        <option value="2">United States of America</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label class="control-label sr-only"></label>
+                                    <label class="control-label">Địa chỉ</label>
                                     <input name="phone" type="text" class="form-control"
-                                        placeholder="Địa chỉ" required>
+                                    value="<%= user.ng_diaChi %>"  placeholder="Địa chỉ" required>
                                 </div>
                             </div>
                             <br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only"></label>
+                                    <label class="control-label">Voucher</label>
                                     <input name="postcode" type="text" class="form-control"
-                                        placeholder="Mã khuyến mãi" required>
+                                    value="<%= vouchercode %>" placeholder="Không có" readonly>
                                 </div>
                             </div>
                             <br>
@@ -75,23 +55,17 @@
                                     <textarea class="form-control" id="textarea" name="textarea" rows="4"
                                         placeholder="Ghi chú"></textarea>
                                 </div>
-                                <br>
-                                <button class="btn btn-primary ">Xác nhận thanh toán</button>
-                                <div class="checkbox alignright mt20">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span>Đăng kí tài khoản?</span>
-                                    </label>
-                                </div>
                             </div>
+                            <br>
                         </form>
+                        <br>
                         <!-- /.checkout-form -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- product total -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 border border-secondary mb-2">
+        <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 border border-secondary mb-2">
             <div class="box">
                 <div class="box-head">
                     <h3 class="head-title">Đơn hàng của bạn</h3>
@@ -109,39 +83,50 @@
                                             <span>Sản phẩm</span>
                                         </th>
                                         <th>
+                                            <span>SL</span>
+                                        </th>
+                                        <th>
                                             <span>Giá tiền</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% for(var i = 0; i < cart.length; i++){ %>
                                     <tr>
                                         <th>
-                                            <span>Google Pixle X 1</span>
+                                            <span><%= cart[i].name %></span>
                                         </th>
-                                        <td>$2400</td>
+                                        <td><%= cart[i].qty %></td>
+                                        <td><%= new Intl.NumberFormat("en-US").format(cart[i].price) %></td>
                                     </tr>
-                                    <tr>
-                                        <th>
-                                            <span>Apple iPhone 6S X 1 </span>
-                                        </th>
-                                        <td>$1300</td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <span>Sub Total </span>
-                                        </th>
-                                        <td>$2400</td>
-                                    </tr>
+                                    <% } %>
                                 </tbody>
                                 <tbody>
                                     <tr>
                                         <th>
                                             <span>Tổng thanh toán</span>
                                         </th>
-                                        <td>$2400</td>
+                                        <td style="color: yellowgreen;"><%= new Intl.NumberFormat("en-US").format(subTotal) %> VND</td>
                                     </tr>
+                                    <tr>
+                                        <th>
+                                            <span>giảm giá</span>
+                                        </th>
+                                        <td style="color: yellowgreen;"><%= discount %> %</td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <span>Tổng tiền phải trả</span>
+                                        </th>
+                                        <td style="color: green;"><%= new Intl.NumberFormat("en-US").format(toTal) %> VND</td>
+                                    </tr>
+
                                 </tbody>
                             </table>
+                            <form action="http://localhost:8888/order/create_payment" method="post">
+                                <input type="number" name="amount" value="<%= toTal %>" readonly>
+                                <button type="submit">Xác nhận thanh toán</button>
+                            </form>
                         </div>
                         <!-- /.product total -->
                     </div>

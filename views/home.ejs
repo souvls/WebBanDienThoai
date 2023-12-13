@@ -61,7 +61,7 @@
                         <span class="fw-medium fst-italic">giảm <%= item.s_uudai %>%</span><br>
                     <% } %>
                     <hr>
-                    <a class="btn btn-primary" href="/add-cart/<%= item.s_ma %>"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="btn btn-primary" onclick="addToCart('<%= item.s_ma %>','<%= item.s_ten %>','<%= item.s_hinh %>','<%= item.s_gia %>','<%= item.s_uudai %>')"><i class="fa-solid fa-cart-shopping"></i></a>
                     <a class="btn btn-info" href="/info/<%= item.s_ma %>"><i class="fa-solid fa-eye"></i></a>
                 </div>
             </div>
@@ -86,14 +86,14 @@
     <div class="container pt-1">
         <% for(var i =0; i < 2; i++){ %>
             <div class="row pb-2">
-            <% for(var j = 0; j < 4; j++){ %>
+            <% for(var j = 0; j < spBanChay.length; j++){ %>
                 <div class="col-sm-3">
-                    <a id="product" href="/info/<%= products[j].s_ma %>">
-                        <img src="/image/product/<%= products[j].s_hinh %>" class="rounded" width="100%" alt="...">
-                        <span class="fw-bold"><%= products[j].s_ten %></span><br>
-                        <span class="fw-medium fst-italic text-danger"><%= new Intl.NumberFormat("en-US").format(products[j].s_gia) %>đ</span><br>
-                        <% if(products[j].s_uudai > 0){ %>
-                            <span class="fw-medium fst-italic">giảm <%= products[j].s_uudai %>%</span><br>
+                    <a id="product" href="/info/<%= spBanChay[j].s_ma %>">
+                        <img src="/image/product/<%= spBanChay[j].s_hinh %>" class="rounded" width="100%" alt="...">
+                        <span class="fw-bold"><%= spBanChay[j].s_ten %></span><br>
+                        <span class="fw-medium fst-italic text-danger"><%= new Intl.NumberFormat("en-US").format(spBanChay[j].s_gia) %>đ</span><br>
+                        <% if(spBanChay[j].s_uudai > 0){ %>
+                            <span class="fw-medium fst-italic">giảm <%= spBanChay[j].s_uudai %>%</span><br>
                         <% } %>
                     </a>
                 </div>

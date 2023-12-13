@@ -1,0 +1,39 @@
+<div class="container-fluid" style="width: 99%; margin-bottom: 1rem; padding: 1rem;">
+    <div class="container-fluid" style="width: 98%; height: 100%;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ngay mua</th>
+              <th>tên khách</th>
+              <th>tổng</th>
+              <th>mã ưu đãi</th>
+              <th>Thành tiền</th>
+              <th>Giao hàng</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <% Object.values(bills).forEach(element=> { %>
+              <tr>
+                <td><%= element.ma_hoa_don %></td>
+                <td><%= new Date(element.ngay_lap).toDateString() %></td>
+                <td><%= element.khach_hang %></td>
+                <td><%= element.tong_tien %></td>
+                <td><%= element.ma_uudai %></td>
+                <td><%= element.toTal %></td>
+                <% if(element.giao_hang === 1){ %>
+                    <td><a href="#" class="btn btn-primary">thành công</a></td>
+                <% }else { %>
+                    <td><a href="confirm-bill/<%= element.ma_hoa_don %>" onclick="return confirm('Số lượn sản phẩm trong Stock sẽ được trừ ra?')" class="btn btn-danger">chưa</a></td>
+                    <td>
+                        <a href="delete-bill/<%= element.ma_hoa_don %>" onclick="return confirm('chắc chắn xóa hay không?')"><i class="fa-solid fa-trash" style="color: #ff0000; "></i></a>
+                    </td>
+                <% } %>
+                
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+      </div>
+</div>

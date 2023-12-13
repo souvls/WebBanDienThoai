@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>New Order</title>
+</head>
+
+<body>
+    <div class="container" style="width: 60%;">
+        <h1 class="mt-2 text-success">
+            <%= code %>
+        </h1>
+        <hr>
+        <h2 class="mt-2 text-center">Đơn Hàng</h2>
+        <h5 class="mt-2 text-center">(vui lòng chụp lại tông tin đơn hàng)</h5>
+        <div class="row">
+            <div class="col-8">
+                <p class="mb-0">
+                    Tên người nhận: <span class="fw-bold"><%= username %></span>
+                </p>
+                <p class="mb-0">
+                    Số điện thoại: <span class="fw-bold"><%= Phone %></span>
+                </p class="mb-0">
+                <p class="mb-0">
+                    Địa chỉ: <span class="fw-bold"><%= Address %></span>
+                </p class="mb-0">
+                <p class="mb-0">
+                    ngày đặt hàng: <span class="fw-bold"><%= _date %></span>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="mb-0">
+                    mã đơn hàng: <span class="fw-bold"><%= id_bill %></span>
+                </p>
+                <p class="mb-0">
+                    BankTranNo: <span class="fw-bold"><%= vnp_BankTranNo %></span>
+                </p class="mb-0">
+                <p class="mb-0">
+                    BankCode: <span class="fw-bold"><%= vnp_BankCode %></span>
+                </p>
+
+            </div>
+        </div>
+        <table class="table table-striped-columns">
+            <thead>
+                <th>
+                    <tr>
+                        <th scope="col">tên sản phẩm</th>
+                        <th scope="col">SL</th>
+                        <th scope="col">giá</th>
+                        <th scope="col">gỉam</th>
+                        <th scope="col">tổng</th>
+                    </tr>
+                </th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < cart.length; i++){ %>
+                    <tr>
+                        <td>
+                            <%= cart[i].name %>
+                        </td>
+                        <td>
+                            <%= cart[i].qty %>
+                        </td>
+                        <td>
+                            <%= new Intl.NumberFormat("en-US").format(cart[i].price) %>
+                        </td>
+                        <td>
+                            <%= cart[i].discount %>%
+                        </td>
+                        <td>
+                            <%= new Intl.NumberFormat("en-US").format(cart[i].count) %>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <tr class="table-warning" style="text-align: right;">
+                        <td colspan="4">tổng tiền</td>
+                        <td colspan="1"><%= new Intl.NumberFormat("en-US").format(subTotal) %> VND</td>
+                    </tr>
+                    <tr class="table-warning" style="text-align: right;">
+                        <td colspan="4">Giảm giá đơn hàng</td>
+                        <td colspan="1"><%= discount %> %</td>
+                    </tr>
+                    <tr class="table-warning" style="text-align: right;">
+                        <td colspan="4">tiền phải trả</td>
+                        <td colspan="1"><%= new Intl.NumberFormat("en-US").format(toTal) %> VND</td>
+                    </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-3">
+                <a class="btn" style="background-color: greenyellow;" href="/">Quay lại trang chủ</a>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

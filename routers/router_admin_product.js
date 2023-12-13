@@ -106,7 +106,7 @@ router.get("/admin/delete-product/:id", (req,res)=>{
                     [id],
                     (err,success) => {
                         if (err) throw err;
-                        res.send(`<script>alert('Xóa id: ${id} thành công!'); window.location.href='/admin/list-product';</script>`);
+                        
                     }
                   )
                 });

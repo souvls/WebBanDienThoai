@@ -38,29 +38,15 @@
                                         <span class="text-secondary">&nbsp;(12 đánh giá)</span>
                                     </div> -->
                                     <p class="product-price" style="font-size: 25px;"><%= new Intl.NumberFormat("en-US").format(product.s_gia) %> VND</p>
-                                    <div class="product-quantity">
-                                        <h4>Số lượng</h4>
-                                        <div class="quantity mb20">
-                                            <input class="btn-quantity decrease-quantity" onclick="dcQuantity()"
-                                                type="button" value="-">
-                                            <input type="number" max="10" min="1" name="quantity" value="1"
-                                                class="quantity-input" id="quantity-input">
-                                            <input class="btn-quantity increase-quantity" onclick="icQuantity()"
-                                                type="button" value="+">
-                                        </div>
-                                        <span class="rest-quantity"><%= product.s_soluong %> sản phẩm có sẵn</span>
-                                    </div>
+                                    <span class="rest-quantity"><%= product.s_soluong %> sản phẩm có sẵn</span>
                                     <div>
-                                        <button class="btn" style="background-color: yellowgreen;">
-                                            Mua Ngay
-                                        </button>
-                                        <button type="submit" class="btn" style="background-color: yellowgreen;">
+                                        <a onclick="addToCart('<%= product.s_ma %>','<%= product.s_ten %>','<%= product.s_hinh %>','<%= product.s_gia %>','<%= product.s_uudai %>')" 
+                                            type="submit" class="btn" 
+                                            style="background-color: yellowgreen;">
                                             <i class="fa fa-shopping-cart"></i>&nbsp;Thêm vào giỏ hàng
-                                        </button>
+                                        </a>
 
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>

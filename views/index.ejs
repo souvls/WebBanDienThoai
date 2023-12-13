@@ -68,8 +68,8 @@
                     <a class="nav-link fs-5" href="#">Liên hệ</a>
                 </li>
                 <li class="nav-item">
-                    <form class="position-relative">
-                        <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
+                    <form action="/search" method="post" class="position-relative">
+                        <input class="form-control me-2 fs-5" type="search" name="search_key" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success position-absolute top-0 end-0 fs-5" type="submit"><i
                                 class="fas fa-search"></i></button>
                     </form>
@@ -78,10 +78,11 @@
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="/cart"><i class="fas fa-shopping-cart"></i>&emsp14;Giỏ hàng</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5" href="#"><i class="fa-solid fa-circle-user"></i>&emsp14;Đăng nhập/Đăng
+                    <li id="isLogin" class="nav-item">
+                        <a class="nav-link fs-5" href="/login"><i class="fa-solid fa-circle-user"></i>&emsp14;Đăng nhập/Đăng
                             ký</a>
                     </li>
+
                 </ul>
             </ul>
         </div>
@@ -110,12 +111,18 @@
             <%- include('home') %>
         <% }else if(x=== 'cart'){ %>
             <%- include('cart') %>
+        <% }else if(x=== 'cart-voucher'){ %>
+            <%- include('cart_voucher') %>
         <% }else if(x=== 'checkout'){ %>
-            <%- include('checkout') %>
+            <%- include('checkout',{user:user,vouchercode:vouchercode,vouchercode:vouchercode,cart:cart,subTotal:subTotal,toTal:toTal}) %>
         <% }else if(x === 'info'){ %>
             <%- include('info') %>
         <% }else if(x === 'search'){ %>
             <%- include('search',{products:products}) %>
+        <% }else if(x === 'login'){ %>
+            <%- include('login') %>
+        <% }else if(x === 'register'){ %>
+            <%- include('register') %>
         <% } %>
         </section>
 
@@ -174,6 +181,142 @@
             });
         }
         //====> End active mune bar ##################### 
+
+        //check Login
+        const cookies = document.cookie.split(';');
+        const myCookie = cookies.find(cookie => cookie.trim().startsWith('isLogin='));
+        const isLogin = myCookie ? myCookie.split('=')[1] : null;
+        if(isLogin){
+            const k = document.getElementById('isLogin');
+            k.innerHTML = `<a class="nav-link text-danger fs-5" onClick="return confirm('Đăng xuất hay không?')" href="/logout"><i class="fa-solid fa-circle-user"></i>&emsp14;Đăng xuất</a>`
+        }
+    </script>
+    <script>
+        //====> add to cart
+        // Tạo một mảng để lưu trữ các sản phẩm được chọn
+        var cart = [];
+
+        // Hàm để thêm sản phẩm vào giỏ hàng
+        function addToCart(id,name,img,price,discount){
+            var New_price = parseInt(price, 10);
+            var New_qty = 1;
+            var New_discount = parseInt(discount, 10)/100;
+            //kiểm tra sản phẩm có trong giỏ hàng chưa
+            cart = getCartCookie();
+            checkExit = true;
+            for(var i = 0 ; i < cart.length; i++){
+                //nếu đã có sản phảm thì tăng thêm số lượng
+                if(cart[i].id === id){
+                    cart[i].qty ++;
+                    cart[i].count = New_price*cart[i].qty;
+                    setCartCookie(cart);
+                    checkExit = false;
+                }
+            }
+            //nếu giỏ hàng chưa có sản phẩm này thì thêm;
+            if(checkExit){
+                var product = {
+                    id:id,
+                    name:name,
+                    img:img,
+                    qty:New_qty,
+                    price:price,
+                    discount:discount,
+                    count:(New_price*New_qty)-(New_price*New_discount).toString()
+                }
+                cart.push(product);
+                setCartCookie(cart);
+            }
+            alert("Thêm thành công");
+            console.log(getCartCookie())
+        }
+        function setCartCookie(cart) {
+            var cartJson = JSON.stringify(cart);
+            document.cookie = "cart=" + encodeURIComponent(cartJson) + "; path=/";
+        }
+        // Define a function to get the shopping cart cookie
+        function getCartCookie() {
+                var nameEQ = "cart=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) {
+                        var cartJson = decodeURIComponent(c.substring(nameEQ.length, c.length));
+                        return JSON.parse(cartJson);
+                    }
+                }
+                return [];
+        }
+        //Delete product in cart
+        function DeleteFromCart(x){
+            var id = x.toString();
+            const confirmed = confirm(`Chắc chắn xóa hay không?`);
+            if (confirmed) {
+                cart = getCartCookie();
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].id === id) {
+                        cart.splice(i,1);
+                        break;
+                    }
+                }
+                setCartCookie(cart);
+                location.reload();
+            }
+        }
+
+        //Display list product in cart 
+        var element = document.getElementById('Data')
+        if (element) {
+            var numProduct = document.getElementById('numProduct')
+            var tamTinh = document.getElementById('tamTinh');
+            var giamGia = document.getElementById('giamGia');
+            var tongCong = document.getElementById('tongCong');
+            var cart = getCartCookie();
+            var k = "";
+            var toTal1 = 0;
+            var toTal2 = 0;
+            for (i = 0; i < cart.length; i++) {
+                k += `<tr>
+                <td><p class="mt-3">${cart[i].name}</p></td>
+                <td><img src="/image/product/${cart[i].img}" class="rounded" width="50px" alt="..."></td>
+                <td><p class="mt-3 text-success">${new Intl.NumberFormat("en-US").format(cart[i].price)}</p></td>
+                <td>
+                    <input style="width:50px" id="quantity${cart[i].id}" type="Number" value="${cart[i].qty}" min=1>
+                </td>
+                <td><p class="mt-3 text-success">${cart[i].discount}%</p></td>
+                <td><p class="mt-3 text-success">${new Intl.NumberFormat("en-US").format(cart[i].count)}</p></td>
+                <td><p class="mt-3 text-danger"><a onClick="DeleteFromCart(${cart[i].id})"><i class="far fa-trash-alt"></i></p></a></td>
+                </tr>`;
+                toTal1 += cart[i].count;
+            }
+            numProduct.innerHTML = cart.length;
+            //writer list pro duct
+            element.innerHTML = k;
+            //write toTal1
+            tamTinh.innerHTML = new Intl.NumberFormat("en-US").format(toTal1.toString())+ " VND";
+            //write total2
+            if(giamGia){
+                toTal2 = toTal1 - (toTal1 * (parseInt(giamGia.textContent,10)/100));
+            }else{
+                toTal2 =toTal1;
+            }
+            tongCong.innerHTML = new Intl.NumberFormat("en-US").format(toTal2.toString())+ " VND";
+
+
+            // Duyệt qua mảng sản phẩm và tạo sự kiện lắng nghe cho mỗi sản phẩm
+            for (let i = 0; i < cart.length; i++) {
+                const quantityTextbox = document.getElementById("quantity" + cart[i].id);
+
+                quantityTextbox.addEventListener("input", function () {
+                    const quantity = parseInt(quantityTextbox.value, 10);
+                    cart[i].qty = quantity;
+                    cart[i].count = cart[i].price*cart[i].qty;
+                    setCartCookie(cart);
+                    location.reload();
+                });
+            }
+        }
     </script>
 </body>
 

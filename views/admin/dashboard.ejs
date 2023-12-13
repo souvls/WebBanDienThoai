@@ -1,4 +1,4 @@
-<div class="container-fluid" style="width: 99%; padding:0 2rem;">
+<div id="dashboard" class="container-fluid" style="width: 99%; padding:0 2rem;">
   <div class="head-dashboard row">
     <div class="col-md-3 p-3">
       <div class="row p-2 rounded" style="background-color: white;">
@@ -6,12 +6,8 @@
           <i style="font-size: 40px;color: skyblue;" class="fa-solid fa-cart-shopping"></i>
         </div>
         <div class="col" style="text-align: center;">
-          <h6 class="mb-10">hàng đang đặt</h6>
-          <h3 class="fw-bold mb-10">34567</h3>
-          <p class="text-sm text-success">
-            <i class="lni lni-arrow-up"></i> +2.00%
-            <span class="text-gray">(30 days)</span>
-          </p>
+          <h6 class="mb-10">Số đơn hàng</h6>
+          <h3 class="fw-bold mb-10"><%= soHoaDon %> đơn</h3>
         </div>
       </div>
     </div>
@@ -22,12 +18,8 @@
           <i style="font-size: 40px;color:green" class="fa-brands fa-square-font-awesome-stroke"></i>
         </div>
         <div class="col" style="text-align: center;">
-          <h6 class="mb-10">Tổng thu nhập</h6>
-          <h3 class="fw-bold mb-10">50,000,000 đ</h3>
-          <p class="text-sm text-success">
-            <i class="lni lni-arrow-up"></i> +2.00%
-            <span class="text-gray">(30 days)</span>
-          </p>
+          <h6 class="mb-10">Số sản phẩm đã bán</h6>
+          <h3 class="fw-bold mb-10"><%= soSanPhamDaBan %> cái</h3>
         </div>
       </div>
     </div>
@@ -38,12 +30,8 @@
           <i style="font-size: 40px;color: rgb(0, 183, 255);" class="fa-solid fa-seedling"></i>
         </div>
         <div class="col" style="text-align: center;">
-          <h6 class="mb-10">Tổng chi phí</h6>
-          <h3 class="fw-bold mb-10">10,000,000</h3>
-          <p class="text-sm text-success">
-            <i class="lni lni-arrow-up"></i> +2.00%
-            <span class="text-gray">(30 days)</span>
-          </p>
+          <h6 class="mb-10">Tổng Thu nhập</h6>
+          <h3 class="fw-bold mb-10"><%= new Intl.NumberFormat("en-US").format(tongThuNhap) %></h3>
         </div>
       </div>
     </div>
@@ -55,11 +43,7 @@
         </div>
         <div class="col" style="text-align: center;">
           <h6 class="mb-10">Tổng User</h6>
-          <h3 class="fw-bold mb-10">34567</h3>
-          <p class="text-sm text-success">
-            <i class="lni lni-arrow-up"></i> +2.00%
-            <span class="text-gray">(30 days)</span>
-          </p>
+          <h3 class="fw-bold mb-10"><%= soNguoiDung %></h3>
         </div>
       </div>
     </div>
@@ -68,70 +52,52 @@
     <hr>
     <h5>thống kê bán hàng</h5>
     <div class="row">
-      <div class="col-md-6 me-2" style="background-color: white;">
+      <div class="col-md-5 me-2" style="background-color: white;">
+        <div class="box-dont-show" style="display: none;">
+          <% for(var i = 0; i < thongKeBanHang.length; i++){ %>
+            <span id="<%= thongKeBanHang[i].month %>"><%= thongKeBanHang[i].toTal_income %></span>
+          <% } %>
+        </div>
         <canvas  id="myChart1"></canvas>
       </div>
-      <div class="col-md-5" style="background-color: white;">
+      <div class="col-md-6" style="background-color: white;">
         <h5>5 Hóa đơn mớin nhất</h5>
         <table class="table">
           <thead>
             <tr>
               <th>id</th>
               <th>ngày đặt</th>
-              <th>tên</th>
+              <th>tên khách</th>
               <th>số tiền</th>
-              <th>pttt</th>
+              <th>Giao hàng</th>
             </tr>
           </thead>
           <tbody>
+            <% for(var i = 0; i < New_5_Hoadon.length; i++){ %>
             <tr>
-              <td>12345</td>
-              <td>324332</td>
-              <td>tên</td>
-              <td>số tiền</td>
-              <td>pttt</td>
+              <td><%= New_5_Hoadon[i].ma_hoa_don %></td>
+              <td><%= new Date(New_5_Hoadon[i].ngay_lap).toDateString() %></td>
+              <td><%= New_5_Hoadon[i].khach_hang %> </td>
+              <td><%= new Intl.NumberFormat("en-US").format(New_5_Hoadon[i].toTal) %></td>
+              <% if(New_5_Hoadon[i].giao_hang === 0){ %>
+                <td class="text-danger">Chưa</td>
+              <%} else{ %>
+                <td class="text-success">Thành công</td>
+              <% } %>
             </tr>
-            <tr>
-              <td>12345</td>
-              <td>324332</td>
-              <td>tên</td>
-              <td>số tiền</td>
-              <td>pttt</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>324332</td>
-              <td>tên</td>
-              <td>số tiền</td>
-              <td>pttt</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>324332</td>
-              <td>tên</td>
-              <td>số tiền</td>
-              <td>pttt</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>324332</td>
-              <td>tên</td>
-              <td>số tiền</td>
-              <td>pttt</td>
-            </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
     </div>
     <br>
     <hr>
-    <h5>thống kê sản phẩm</h5>
+    <h5>sản phẩm bán chạy</h5>
     <div class="row">
-      <div class="col-md-3 me-2" style="background-color: white;">
+      <!-- <div class="col-md-3 me-2" style="background-color: white;">
         <canvas  id="myChart2"></canvas>
-      </div>
+      </div> -->
       <div class="col-md-8" style="background-color: white;">
-        <h5>5 sản phẩm bán chạy</h5>
         <table class="table">
           <thead>
             <tr>
@@ -143,53 +109,26 @@
             </tr>
           </thead>
           <tbody>
+            <% for(var i = 0; i<spBanChay.length; i++){ %>
             <tr>
-              <td>12345</td>
-              <td>ácdvvr</td>
-              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
-              <td>50</td>
-              <td>100</td>
+              <td><%= spBanChay[i].s_ma %></td>
+              <td><%= spBanChay[i].s_ten %></td>
+              <td><img src="/image/product/<%= spBanChay[i].s_hinh %>" width="40px"></td>
+              <td><%= spBanChay[i].so_luong_ban %> cái</td>
             </tr>
-            <tr>
-              <td>12345</td>
-              <td>ácdvvr</td>
-              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
-              <td>50</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>ácdvvr</td>
-              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
-              <td>50</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>ácdvvr</td>
-              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
-              <td>50</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>12345</td>
-              <td>ácdvvr</td>
-              <td><td><img src="/image/product/shopify.svg" width="20px"></td></td>
-              <td>50</td>
-              <td>100</td>
-            </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
     </div>
 
     <br>
-    <hr>
+    <!-- <hr>
     <h5>thống kê người dùng</h5>
     <div class="row">
       <div class="col-md-6 me-2" style="background-color: white;">
         <canvas  id="myChart3"></canvas>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
